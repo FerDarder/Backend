@@ -8,7 +8,7 @@ const products = new Router()
 products.use(express.json())
 products.use(express.urlencoded({extended: true}))
 
-const productList = new Contenedor('./productos.txt');
+const productList = new Contenedor('productos.txt');
 
 
 
@@ -37,7 +37,7 @@ products.post('/',async (req,res)=>{
         "thumbnail": req.body.thumbnail
     }
     const newProduct = await productList.save(newData);
-    res.status(200).send(`Producto agregado con el id: `)
+    res.status(200).send(`Producto ${newProduct.title} con el precio $${newProduct.price} y el thumbnail ${newProduct.thumbnail} agregado exitosamente con ID: ${newProduct.id}`);
     
 })
 

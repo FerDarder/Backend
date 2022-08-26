@@ -96,7 +96,7 @@ class Contenedor {
         try {
         const allData = await this.getData();
         const parsedData = JSON.parse(allData);
-        newData.id = parsedData[parsedData.length].id + 1;
+        newData.id = (parsedData[parsedData.length-1].id + 1);
         parsedData.push(newData);
         await fs.promises.writeFile(this._filename, JSON.stringify(parsedData));
         return newData;
